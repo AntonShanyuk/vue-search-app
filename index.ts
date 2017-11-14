@@ -1,10 +1,20 @@
 import Vue from 'vue';
-import Typeahead from './components/typeahead.vue';
 
-const app = new Vue({
+import ImagePreview from './components/image-preview.vue';
+import Typeahead from './components/typeahead.vue';
+import { store } from './store';
+
+export const app = new Vue({
     el: 'app',
-    template: '<typeahead></typeahead>',
+    template: `
+<div>
+    <div><typeahead></typeahead></div>
+    <div><image-preview></image-preview></div>
+</div>
+    `,
+    store,
     components: {
         Typeahead,
+        ImagePreview,
     },
 });
