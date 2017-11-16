@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-      <input type="text" @input="change" @keyup="keyUp">
-      <ul>
+      <input type="text" @input="change" @keyup="keyUp" placeholder="Type something, eg 'cat'">
+      <ul v-if="items.length">
         <li 
         v-for="(item, index) in items" 
         v-bind:key="index" 
@@ -14,6 +14,27 @@
   </div>
 </template>
 <style lang="scss" scoped>
+input {
+  font-size: 20px;
+  margin-top: 30px;
+  padding: 5px;
+}
+input, ul {
+  margin-left: 30px;
+  margin-right: 30px;
+  width: 400px;
+}
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  border-width: 0 1px 1px 1px;
+  border-color: gray;
+  border-style: solid;
+  padding: 6px;
+}
+li {
+  list-style: none;
+}
 li.selected {
   font-weight: bold;
 }
@@ -47,10 +68,10 @@ export default {
       store.dispatch("selectImage", { index });
     },
     keyUp(e: KeyboardEvent) {
-      if(e.which === 38) {
-        store.dispatch('selectImageUp');
-      } else if(e.which === 40) {
-        store.dispatch('selectImageDown');
+      if (e.which === 38) {
+        store.dispatch("selectImageUp");
+      } else if (e.which === 40) {
+        store.dispatch("selectImageDown");
       }
     }
   },
