@@ -1,20 +1,13 @@
 import Vue from 'vue';
 
-import ImagePreview from './components/image-preview.vue';
-import Typeahead from './components/typeahead.vue';
+import AppGrid from './components/app-grid.vue';
 import { store } from './store';
 
 export const app = new Vue({
     el: 'app',
-    template: `
-<div>
-    <div><typeahead></typeahead></div>
-    <div><image-preview></image-preview></div>
-</div>
-    `,
+    template: '<app-grid></app-grid>',
     store,
     components: {
-        Typeahead,
-        ImagePreview,
+        AppGrid,
     },
 });
